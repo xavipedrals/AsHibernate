@@ -3,13 +3,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import taules.Casella;
+import taules.CasellaPK;
 import taules.Partida;
-
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -65,8 +63,14 @@ public class MainManual {
                     break;
                 case ("2"):
                     session.beginTransaction();
+                    System.out.print("Escriu l'id de la partida a la que afegir la casella:\n");
+                    String id = new Scanner(System.in).next();
+                    System.out.print(id + "\n");
+                    Partida dbPartida = (Partida) session.get(Partida.class, Integer.parseInt(id));
+                    System.out.println(dbPartida.getIdpartida() + " - " + dbPartida.getPuntuacio());
+
                     Casella c = new Casella();
-                    c.setIdpartida(1);
+                    c.setIdpartida(dbPartida.getIdpartida());
                     c.setNumerocolumna(0);
                     c.setNumerofila(0);
                     c.setNumero(2048);
@@ -79,6 +83,24 @@ public class MainManual {
                 case ("4"):
                     break;
                 case ("5"):
+                    session.beginTransaction();
+                    System.out.print("Escriu l'id de la partida:\n");
+                    String idPartida = new Scanner(System.in).next();
+                    System.out.print("Escriu numero fila:\n");
+                    String numeroFila = new Scanner(System.in).next();
+                    System.out.print("Escriu numero columna:\n");
+                    String numeroColumna = new Scanner(System.in).next();
+                    System.out.print(idPartida + " " + numeroFila + " " + numeroColumna + "\n");
+
+                    CasellaPK casellaPK = new CasellaPK();
+                    casellaPK.setIdpartida(Integer.parseInt(idPartida));
+                    casellaPK.setNumerofila(Integer.parseInt(numeroFila));
+                    casellaPK.setNumerocolumna(Integer.parseInt(numeroColumna));
+
+                    Casella caselladb = (Casella) session.get(Casella.class, casellaPK);
+                    System.out.println(caselladb.getIdpartida() + " - " + caselladb.getNumero());
+
+                    session.getTransaction().commit();
                     break;
                 case ("6"):
                     sortir = true;
