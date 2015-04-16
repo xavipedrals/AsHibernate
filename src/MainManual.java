@@ -108,6 +108,5 @@ public class MainManual {
             }
         }
         session.close();
-
     }
 }

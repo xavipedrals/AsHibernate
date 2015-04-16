@@ -1,9 +1,7 @@
 package taules;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by xavivaio on 15/04/2015.
@@ -14,6 +12,18 @@ public class Partida {
     private boolean estaacabada = false;
     private boolean estaguanyada = false;
     private int puntuacio;
+
+    /**Clau forana**/
+    private List<Casella> casellaList;
+
+    @OneToMany(targetEntity = Casella.class, mappedBy = "partida", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public List<Casella> getCasellaList() {
+        return casellaList;
+    }
+
+    public void setCasellaList(List<Casella> casellaList) {
+        this.casellaList = casellaList;
+    }
 
     @Id
     @Column(name = "idpartida")

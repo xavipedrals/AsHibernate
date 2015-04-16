@@ -13,6 +13,19 @@ public class Casella {
     private int numerocolumna;
     private Integer numero;
 
+    /**Clau forana**/
+    private Partida partida;
+
+    @ManyToOne
+    @JoinColumn(name = "idpartida", insertable = false, updatable = false)
+    public Partida getPartida() {
+        return partida;
+    }
+
+    public void setPartida(Partida partida) {
+        this.partida = partida;
+    }
+
     @Id
     @Column(name = "idpartida")
     public int getIdpartida() {
