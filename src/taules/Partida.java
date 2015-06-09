@@ -3,9 +3,7 @@ package taules;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by xavivaio on 15/04/2015.
- */
+
 @Entity
 public class Partida {
     private int idpartida;
@@ -24,9 +22,11 @@ public class Partida {
     public void setCasellaList(List<Casella> casellaList) {
         this.casellaList = casellaList;
     }
+    /**Fi clau fornana**/
 
     @Id
     @Column(name = "idpartida")
+    @GeneratedValue
     public int getIdpartida() {
         return idpartida;
     }
@@ -36,7 +36,7 @@ public class Partida {
     }
 
     @Basic
-    @Column(name = "estaacabada")
+    @Column(name = "estaacabada", nullable = false)
     public boolean isEstaacabada() {
         return estaacabada;
     }
@@ -46,7 +46,7 @@ public class Partida {
     }
 
     @Basic
-    @Column(name = "estaguanyada")
+    @Column(name = "estaguanyada", nullable = false)
     public boolean isEstaguanyada() {
         return estaguanyada;
     }

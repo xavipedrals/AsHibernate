@@ -9,10 +9,13 @@
         <property name="connection.password">postgres</property>
         <property name="connection.url">jdbc:postgresql://localhost:5432/practicaas</property>
         <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="default_schema">public</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">thread</property>
 
         <mapping class="taules.Casella"/>
         <mapping class="taules.Partida"/>
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hbm2ddl.auto">update</property> -->
+
     </session-factory>
 </hibernate-configuration>

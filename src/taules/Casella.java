@@ -2,9 +2,7 @@ package taules;
 
 import javax.persistence.*;
 
-/**
- * Created by xavivaio on 15/04/2015.
- */
+
 @Entity
 @IdClass(CasellaPK.class)
 public class Casella {
@@ -16,7 +14,7 @@ public class Casella {
     /**Clau forana**/
     private Partida partida;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idpartida", insertable = false, updatable = false)
     public Partida getPartida() {
         return partida;
@@ -25,6 +23,7 @@ public class Casella {
     public void setPartida(Partida partida) {
         this.partida = partida;
     }
+    /**Fi clau forana**/
 
     @Id
     @Column(name = "idpartida")
@@ -37,7 +36,7 @@ public class Casella {
     }
 
     @Id
-    @Column(name = "numerofila")
+    @Column(name = "numerofila", nullable = false)
     public int getNumerofila() {
         return numerofila;
     }
@@ -47,7 +46,7 @@ public class Casella {
     }
 
     @Id
-    @Column(name = "numerocolumna")
+    @Column(name = "numerocolumna", nullable = false)
     public int getNumerocolumna() {
         return numerocolumna;
     }
@@ -64,7 +63,6 @@ public class Casella {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
-        //if (numero = 2048) setGuanyada(true);
     }
 
     @Override

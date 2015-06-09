@@ -53,7 +53,7 @@ public class MainManual {
                 case ("1"):
                     session.beginTransaction();
                     Partida p = new Partida();
-                    p.setIdpartida(1);
+                    p.setIdpartida(0);
                     p.setEstaacabada(false);
                     p.setEstaguanyada(false);
                     p.setPuntuacio(0);

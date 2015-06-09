@@ -4,9 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by xavivaio on 15/04/2015.
- */
+
 public class CasellaPK implements Serializable {
     private int idpartida;
     private int numerofila;
