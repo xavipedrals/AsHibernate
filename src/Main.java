@@ -12,6 +12,8 @@ import java.util.Map;
 /**
  * Created by xavivaio on 15/04/2015.
  */
+
+//TODO es broma
 public class Main {
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;
